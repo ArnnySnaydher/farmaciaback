@@ -1,0 +1,33 @@
+###
+POST http://localhost:9000/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Glucerna Triple Care Sabor Vainilla - Lata 900 G",
+    "precio": 134.90,
+    "descripcion": "Nutrición completa y balanceada",
+    "laboratorio": "Glucerna",
+    "stock": 12,
+    "vencimiento": "01/08/2023",
+    "imagen": "https://dcuk1cxrnzjkh.cloudfront.net/imagesproducto/005048X.jpg",
+    "categoria": "Nutrición"
+}
+
+###
+GET http://localhost:9000/api/products HTTP/1.1
+
+###
+GET http://localhost:9000/api/products/62d43f3ea083413d0c623b67 HTTP/1.1
+
+###
+PUT http://localhost:9000/api/products/62d43f3ea083413d0c623b67 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Jose Navarro",
+    "age": 23,
+    "email": "jose229901@gmail.com"
+}
+
+###
+DELETE http://localhost:9000/api/products/62d440bf1330d52b3ab83cab HTTP/1.1
