@@ -29,6 +29,10 @@ const productSchema = Schema({
         type: String,
         required: true
     },
+    empresa: {
+        type: Schema.Types.ObjectId,
+        ref: 'Empresa'
+    },
     // categoria: {
     //     type: String,
     //     required: true
