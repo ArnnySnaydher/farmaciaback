@@ -23,6 +23,10 @@ const UserSchema = Schema({
         type: Boolean,
         default: false
     },
+    empresa: {
+        type: String,
+        default: "medical"
+    },
     role: {
         type: String,
         enum: ['superAdmin','admin', 'client'],

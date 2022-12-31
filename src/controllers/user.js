@@ -55,24 +55,31 @@ const updateUser = async(req = request, res) => {
 }
 
 
-// const usuariosPost = async(req, res) => {
+const usuariosPost = async(req, res) => {
 
+    const {name, email, password, rol, lastname, empresa} = req.body;
 
-//     const {nombre, correo, password, rol} = req.body;
-//     const usuario = new Usuario({nombre, correo, password, rol});
+    const m = await User.findOne({email})
+    // const userDB = await User.findOne({ email })
+    if (m) {
+        return res.json({
+            status: false,
+            msg: "Ya existe email con ese correo"
+        });
+    }
 
-//     // Encriptar la contraseña
-//     const salt = bcryptjs.genSaltSync(10);
-//     usuario.password = bcryptjs.hashSync(password, salt);
+    const usuario = new User({name, email, password, rol, lastname, empresa});
 
-//     //Guardar em BD
-//     await usuario.save();
+    const salt = bcryptjs.genSaltSync(10);
+    usuario.password = bcryptjs.hashSync(password, salt);
 
-//     //const {nombre,edad} = req.body;
-//     res.json({
-//         usuario
-//     });
-// }
+    await usuario.save();
+
+    return res.json({
+        ok: true,
+        usuario
+    });
+}
 
 
 const getUserById = async(req = request, res=response) => {
@@ -115,5 +122,5 @@ module.exports = {
     updateUser,
     getUserById,
     deleteUser,
-    // usuariosPost, usuariosPatch
+    usuariosPost
 }
